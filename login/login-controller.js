@@ -4,12 +4,12 @@ async function handleLoginUser(userEmail, password) {
     const token = await loginUser(userEmail, password)
 
     localStorage.setItem("jwt", token);
-    windows.location.href = "/"
+    window.location.href = "/"
 }
 
-export function signupController(loginForm) {
+export function loginController(loginForm) {
 
-    form.addEventListener("submit", (event) =>{
+    loginForm.addEventListener("submit", (event) =>{
         event.preventDefault();
 
         const userEmailElement = loginForm.querySelector("#user-mail");
@@ -17,8 +17,6 @@ export function signupController(loginForm) {
 
         const userEmail = userEmailElement.value;
         const password = passwordElement.value;
-
-        const error = []
 
         const emailRegExp = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
         if(!emailRegExp.test(userEmail)) {

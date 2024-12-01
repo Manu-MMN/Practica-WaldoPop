@@ -1,13 +1,13 @@
 export async function createItem(message) {
     const token = localStorage.getItem("jwt");
 
-    const response = await fetch("http://localhost:8000/api/Items", {
+    const response = await fetch("http://localhost:8000/api/items", {
         method: "POST",
-        body: JSON.stringify({
-            message
-        }),
+        body: JSON.stringify(
+        message
+        ),
         headers: {
-        "content-type": "aplication/json",
+        "content-type": "application/json",
         "Authorization": `Bearer ${token} `
         }
     })

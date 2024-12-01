@@ -32,7 +32,7 @@ export function signupController(form) {
         }
 
         if(password !== passwordConfirm) {
-            error.push(" The passwords aren't the same")
+            error.push("The passwords aren't the same")
         }
 
         if (error.length === 0){

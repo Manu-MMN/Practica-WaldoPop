@@ -1,14 +1,14 @@
-import { getItems } from "./items-model";
-import { buildEmptyItemList, buildItem } from "./items-view";
+import { getItems } from "./items-model.js";
+import { buildEmptyItemList, buildItem } from "./items-view.js";
 
 
-function drawItems(items, itemsContainer){
+export function drawItems(items, itemsContainer){
     if(!items.length) {
         itemsContainer.innerHTML = buildEmptyItemList();
     } else {
         items.forEach(item =>{
             const newItem = buildItem(item);
-            itemsContainer.appenChild(newItem)
+            itemsContainer.appendChild(newItem)
         })
 
     }
