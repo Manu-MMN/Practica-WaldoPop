@@ -1,25 +1,30 @@
 import { getCurrentUserInfo } from "../auth/auth-model.js"
 import { getItem, removeItem } from "./item-detail-model.js"
-import { buildDeleteButton, buildItemDetail } from "./item-detail-view.js"
+import { buildDeleteButton, buildItemtDetail } from "./item-detail-view.js"
 
 export async function itemDetailController(itemDetailContainer, itemId) {
 
 
-    //obtener datos del tweet
+
     try {
         const item = await getItem(itemId);
+        let user = null;
+        try {
+         user = await getCurrentUserInfo();
 
-        const user = await getCurrentUserInfo();
+        } catch (error) { 
+            console.log(error)
+        }
 
         
 
-        itemDetailContainer.innerHTML = buildItemDetail(item);
+        itemDetailContainer.innerHTML = buildItemtDetail(item);
 
         
-        if (user.id === item.userId) {
+        if (user && user.id === item.userId) {
             //pintar botón de borrado
             const removeButtonElement = buildDeleteButton();
-            itemDetailContainer.appenChild(removeButtonElement);
+            itemDetailContainer.appendChild(removeButtonElement);
 
             removeButtonElement.addEventListener("click", async () =>{
                 const shouldRemoveItem = confirm("Sure you want to delete the item?");  
@@ -33,7 +38,7 @@ export async function itemDetailController(itemDetailContainer, itemId) {
         }
 
     } catch (error) {
-        alert("error.message")
+        alert("something went wrong!")
     }
 }
 
