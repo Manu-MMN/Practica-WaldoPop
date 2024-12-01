@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Item</title>
+</head>
+
+<body>
+    <h1>Create a New Item</h1>
+
+    <form id="create-item-form">
+        <!-- Campo para el nombre del artículo -->
+        <label for="item-name">Item Name:</label>
+        <input 
+            type="text" 
+            id="item-name" 
+            name="item-name" 
+            maxlength="50" 
+            placeholder="e.g., Mountain Bike" 
+            required
+        />
+        <br />
+
+        <!-- Campo para el precio -->
+        <label for="item-price">Price (in USD):</label>
+        <input 
+            type="number" 
+            id="item-price" 
+            name="item-price" 
+            min="1" 
+            step="0.01" 
+            placeholder="e.g., 100" 
+            required
+        />
+        <br />
+
+        <!-- Campo para la descripción -->
+        <label for="item-description">Description:</label>
+        <textarea 
+            id="item-description" 
+            name="item-description" 
+            rows="5" 
+            maxlength="140" 
+            placeholder="Describe your item..." 
+            required
+        ></textarea>
+        <br />
+
+        <!-- Campo para la URL de la imagen -->
+        <label for="item-image">Image URL (optional):</label>
+        <input 
+            type="url" 
+            id="item-image" 
+            name="item-image" 
+            placeholder="e.g., https://example.com/image.jpg" 
+        />
+        <br />
+
+        <!-- Campo para el tipo de artículo -->
+        <label>Item Type:</label>
+        <input 
+            type="radio" 
+            id="sale" 
+            name="item-type" 
+            value="sale" 
+            required
+        />
+        <label for="sale">For Sale</label>
+        <input 
+            type="radio" 
+            id="service" 
+            name="item-type" 
+            value="service" 
+            required
+        />
+        <label for="service">For Buy</label>
+        <br />
+
+        <!-- Botón para enviar -->
+        <button type="submit">Create Item</button>
+    </form>
+
+    <script type="module" src="./create-item.js"></script>
+</body>
+
+</html>
